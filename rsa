@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+
+def factorize_rsa_number(n):
+    factors = []
+    i = 2
+
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+
+    if n > 1:
+        factors.append(n)
+
+    return factors
+
+def format_output(n, factors):
+    return f"{n}={'*'.join(map(str, factors))}"
+
+def main():
+    # Example usage
+    rsa_numbers = [6, 77, 239821585064027, 2497885147362973]
+
+    for n in rsa_numbers:
+        factors = factorize_rsa_number(n)
+        output = format_output(n, factors)
+        print(output)
+
+if __name__ == "__main__":
+    main()
